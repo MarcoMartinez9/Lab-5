@@ -85,7 +85,26 @@ public class Calculator
             throws ArithmeticException, NumberFormatException, CalculatorException
     {
         // TODO: complete this...
+    	int num1 = Integer.parseInt(tokens[0]);
+    	String command = tokens[1];
+    	int num2 = Integer.parseInt(tokens[2]);
     	
+    	if(command.equals("+"))
+    	{
+    		return num1 + num2;
+    	}
+    	else if(command.contentEquals("-"))
+    	{
+    		return num1 - num2;
+    	}
+    	else if(command.equals("/"))
+    	{
+    		return num1 / num2;
+    	}
+    	else 
+    	{
+    		throw new CalculatorException("Illegal Command");
+    	}	
     }
 
     /**
