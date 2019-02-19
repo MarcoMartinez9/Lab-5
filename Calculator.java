@@ -36,7 +36,6 @@ public class Calculator
     {
     	int a = Integer.parseInt(tokens[1]); // Throws NumberFormatException if the second token is not an int value.
     	
-        // TODO: complete this...
     	String command = tokens[0];
     	if(command.equalsIgnoreCase("negate"))
     	{
@@ -84,7 +83,6 @@ public class Calculator
     protected static int calculateThreeTokens(String[] tokens)
             throws ArithmeticException, NumberFormatException, CalculatorException
     {
-        // TODO: complete this...
     	int num1 = Integer.parseInt(tokens[0]);
     	String command = tokens[1];
     	int num2 = Integer.parseInt(tokens[2]);
@@ -200,5 +198,30 @@ public class Calculator
         // TODO: complete this...
         // Hint: you should try and call execute(). If execute encounters an error, it will throw an exception. This
         // method will catch those exceptions and respond accordingly.
+    	String [] tokenizes = input.split(" ");
+    	
+    	try
+    	{
+    		if(execute(tokenizes) == (Integer.MIN_VALUE))
+    		{
+    			return "quit";
+    		}
+    		else
+    		{
+    			return String.format("The result is: %d", execute(tokenizes));
+    		}
+    	}
+    	catch (CalculatorException e)
+    	{
+    		return String.format("Calculator Exception, message is: %s", e.getMessage());
+    	}
+    	catch(ArithmeticException e)
+    	{
+    		return "Attempted to divide by 0. Please try again.";
+    	}
+    	catch(NumberFormatException e)
+    	{
+    		return "Input number cannot be parsed to an int. Please try again.";
+    	}
     }
 }
